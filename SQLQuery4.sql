@@ -1,0 +1,42 @@
+CREATE DATABASE Optus;
+
+USE Optus;
+
+CREATE TABLE Estilos (
+	IdEstilo INT PRIMARY KEY IDENTITY,
+	Nome VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE Musicos (
+	IdMusicos INT PRIMARY KEY IDENTITY,
+	Nome VARCHAR (200) NOT NULL
+);
+
+CREATE TABLE TipoUsuario (
+	IdTipoUsuario INT PRIMARY KEY IDENTITY,
+	Nome VARCHAR (200) NOT NULL
+);
+
+CREATE TABLE Usuarios (
+	IdUsuario INT PRIMARY KEY IDENTITY,
+	Nome VARCHAR (200) NOT NULL,
+	IdTipoUsuario INT FOREIGN KEY REFERENCES TipoUsuario (IdTipoUsuario)
+);
+
+CREATE TABLE Albuns (
+	IdAlbuns INT PRIMARY KEY IDENTITY,
+	Nome VARCHAR (200) NOT NULL,
+	DataLancamento VARCHAR (200) NOT NULL,
+	Minutos VARCHAR (200) NOT NULL,
+	Visualizaçao VARCHAR (200) NOT NULL,
+	IdMusicos INT FOREIGN KEY REFERENCES Musicos (IdMusicos),
+	IdEstilo INT FOREIGN KEY REFERENCES Estilos (IdEstilo)
+);
+
+SELECT * FROM Estilos;
+SELECT * FROM Musicos;
+SELECT * FROM TipoUsuario;
+SELECT * FROM Usuarios;
+SELECT * FROM Albuns;
+
+DROP DATABASE Musica;
